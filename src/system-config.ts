@@ -7,10 +7,16 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  'firebase': 'vendor/firebase/firebase.js',
+  'angularfire2': 'vendor/angularfire2'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  angularfire2: {
+    defaultExtension: 'js',
+    main: 'angularfire2.js'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,6 +40,14 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/post-list',
+  'app/user-login',
+  'app/new-post',
+  'app/comment',
+  'app/new-comment',
+  'app/friends',
+  'app/signup',
+  'app/like',
   /** @cli-barrel */
 ];
 

@@ -1,0 +1,13 @@
+<form (ngSubmit)="commentForm.form.valid && createComment()" #commentForm="ngForm">
+      <input type="text" placeholder="Write a comment..." required [(ngModel)]="newComment.message" ngControl="message" [ngModelOptions]="{standalone: true}">
+    
+      <button type="submit">Submit</button>
+    
+</form>    
+    <ul>
+      
+      <li *ngFor="let comment of comments | async">
+        <h1>{{comment.title}}</h1>
+        <p>{{ comment.message }}</p>
+      </li>
+    </ul>

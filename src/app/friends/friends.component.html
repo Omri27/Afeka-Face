@@ -1,0 +1,10 @@
+<!--<form (ngSubmit)="friendsForm.form.valid" #postForm="ngForm">-->
+      <input name="search" id="searchText" type="text" placeholder="search..." [(ngModel)]="searchText" />
+       <!--<button type="submit">addFriend</button>-->
+<!--</form> -->
+
+<ul>
+  <li *ngFor="let user of friendsdb | async | friends:searchText:user">
+   <a href="javascript:;" (click)="addFriend(user.$key)">{{user.name}}</a>
+  </li>
+</ul>

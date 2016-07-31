@@ -1,0 +1,43 @@
+<head>
+  <title>Bootstrap Example</title>
+  <!--<link rel="stylesheet" type="text/css" href="post-list.component.css">-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--<script src="jquery.bsPhotoGallery.js"></script>-->
+</head>
+
+<form (ngSubmit)="postForm.form.valid && createPost()" #postForm="ngForm">
+
+    <h1>{{newPost.title}}</h1>
+    <input type="text" placeholder="What's on your mind?" required [(ngModel)]="newPost.description" ngControl="description"
+        [ngModelOptions]="{standalone: true}">
+    <input type="checkbox" [(ngModel)]="newPost.isPublic" [ngModelOptions]="{standalone: true}">public?<br>
+    <input type="file" (change)="handleMultipleUpload($event)" multiple/><br>
+    <button type="submit">Submit</button>
+
+</form>
+
+<ul>
+    <div *ngFor="let post of posts | async">
+        <div *ngIf="post.isPublic || currentUserUid== post.userId">
+            <li>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.description }}</p>
+                <div id= "loopphotos" *ngFor="let photo of post.photos">
+                   <img width="100px" [src]="photo">
+                </div>
+                <div *ngIf="currentUserUid== post.userId">
+                    <input type="checkbox" (change)="changePost(post,post.$key)" [(ngModel)]="post.isPublic" [ngModelOptions]="{standalone: true}">public?<br>
+                </div>
+                <like [postid]="post.$key"></like>
+                <comment  [postid]="post.$key"></comment>
+                <div *ngIf="currentUserUid== post.userId">
+                <button (click)="deletePost(post.$key)">Delete Post</button>
+                </div>
+            </li>
+        </div>
+    </div>
+</ul>

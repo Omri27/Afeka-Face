@@ -1,0 +1,40 @@
+<section class="signUp-component">
+  <div class="container">
+    <div class="card">
+      <div class="row">
+        <div class="col s5 push-s5">
+          <h4 >Sign Up</h4>
+        </div>
+      </div>
+      <div class="card-image waves-effect waves-block waves-light">
+        <div class="row">
+          <form class="container">
+            <div class="row">
+              <div class="input-field">
+                <input id="name" name ="name" type="text" class="validate" [(ngModel)]="user.name">
+                <label for="name">Name</label>
+              </div>
+             </div>
+            <div class="row">
+              <div class="input-field">
+                <input id="email" name = "email" type="email" class="validate" [(ngModel)]="user.email">
+                <label for="email">Email</label>
+              </div>
+             </div>
+             <div class="row"> 
+              <div class="input-field">
+                <input id="password" name= "password" type="password" class="validate" [(ngModel)]="user.password">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <p>
+                <button class="waves-effect waves-teal btn blue" (click)="signUp()">SignUp</button>
+              </p>
+            </div>
+           </form>
+         </div>
+      </div>      
+    </div>            
+  </div>  
+</section>

@@ -1,3 +1,12 @@
-<h1>
-  {{title}}
-</h1>
+
+  <center><h1>{{title}}</h1></center>
+  <center><h2 *ngIf="loggedIn">Hello {{(currentUser | async)?.name}}</h2></center>
+  <div display:inline-block align="center" *ngIf="!loggedIn" >
+ <login  (onUserLoggedIn)='onUserLoggedIn($event)'>  </login>
+ <signUp  >  </signUp>
+  </div>
+  <div *ngIf="loggedIn">
+  <friends *ngIf="loggedIn" ></friends>
+  <feed *ngIf="loggedIn"></feed>
+  <button  (click)="logOut()"> LogOut</button>
+  </div>
