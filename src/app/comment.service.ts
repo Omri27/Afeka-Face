@@ -11,7 +11,6 @@ export class CommentService {
   constructor(private af: AngularFire) {
     this.db = this.af.database.list('timeline/posts');
   }
-
   create(post: string, title:string,message: string): void {
   
     this.af.database.list(`timeline/posts/${post}/comments`).push({
