@@ -21,7 +21,6 @@ export class AppComponent {
   private user: User;
   private currentUser:FirebaseObjectObservable<any>;
     constructor(private af: AngularFire, private lg: LoginService,private auth: FirebaseAuth) {
- 
   }
    onUserLoggedIn(user) {
      this.loggedIn = true;
